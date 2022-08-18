@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<DEFTABLE>
+
+<TABLE DATACENTER="CTM_DC1" TABLE_NAME="CTM_TABLE1" TABLE_USERDAILY="CTM_TABLE_UD1" USED_BY_CODE="0">
+
+  <JOB 
+   APPLICATION="CTM_APP1" 
+   APR="1" 
+   AUG="1" 
+   AUTHOR="author1" 
+   AUTOARCH="0" 
+   CHANGE_DATE="20140312" 
+   CHANGE_TIME="162715" 
+   CHANGE_USERID="avb@def.com" 
+   CONFIRM="0" 
+   CREATION_DATE="20140311" 
+   CREATION_TIME="225838" 
+   CREATION_USER="xyz@def.com" 
+   CRITICAL="0" 
+   CYCLIC="0" 
+   CYCLIC_TYPE="Interval" 
+   DAYS="ALL" 
+   DAYS_AND_OR="OR" 
+   DEC="1" 
+   DESCRIPTION="Ctm Test Job 1" 
+   FEB="1" 
+   GROUP="GFO" 
+   INSTREAM_JCL="set -e&#xA;cd /usr/etl/group/module/my_module/bin;&#xA;sudo -E -u etluser bash etl.sh;" 
+   INTERVAL="00001M" 
+   JAN="1" 
+   JOBNAME="CTM_JOB_NAME1" 
+   JUL="1" 
+   JUN="1" 
+   MAR="1" 
+   MAXDAYS="0" 
+   MAXRERUN="0" 
+   MAXRUNS="0" 
+   MAXWAIT="1" 
+   MAY="1" 
+   MEMLIB="/usr/etl/group/module/my_module/bin" 
+   MEMNAME="etl.sh" 
+   MULTY_AGENT="N" 
+   NODEID="CTM_NODE1" 
+   NOV="1" 
+   OCT="1" 
+   OWNER="CTM_JOB_OWNER1" 
+   PARENT_TABLE="CTM_TABLE_1" 
+   RETRO="0" 
+   RULE_BASED_CALENDAR_RELATIONSHIP="OR" 
+   SEP="1" 
+   SHIFT="IGNOREJOB" 
+   SHIFTNUM="+00" 
+   SYSDB="0" 
+   TASKTYPE="Job" 
+   USE_INSTREAM_JCL="Y" 
+   WEEKDAYS="ALL">
+    <CONTROL NAME="TEST_CONTROL1-RES" TYPE="E"/>
+    <CONTROL NAME="TEST_CONTROL2-RES" TYPE="E"/>
+    <INCOND AND_OR="AND" NAME="INCOND1-ENDED" ODATE="STAT"/>
+    <INCOND AND_OR="AND" NAME="INCOND2-ENDED" ODATE="STAT"/>
+    <OUTCOND NAME="OUTCOND1-ENDED" ODATE="STAT" SIGN="DEL"/>
+    <OUTCOND NAME="OUTCOND2-ENDED" ODATE="STAT" SIGN="DEL"/>
+    <ON CODE="NOTOK" STMT="*">
+      <DOMAIL 
+       ATTACH_SYSOUT="Yes" 
+       CC_DEST="abc@def.com" 
+       DEST="xyz@def.com" 
+       MESSAGE="0078The ControlM Job %%JOBNAME  finished with ERROR in the Datacenter %%DATACENTER00000014$Date: %%$DATE0012TIME: %%TIME0016APPLIC: %%APPLIC0020SCHEDTAB: %%SCHEDTAB0022APPLGROUP: %%APPLGROUP0018JobName: %%JOBNAME0018MemName: %%MEMNAME0020COMPSTAT: %%COMPSTAT0016NodeID: %%NODEID0014Owner: %%OWNER" 
+       SUBJECT="%%JOBNAME  - Error" 
+       URGENCY="U"/>
+    </ON>
+  </JOB>
+
+</TABLE>
+</DEFTABLE>
